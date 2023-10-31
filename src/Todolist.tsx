@@ -15,7 +15,8 @@ import {
     Typography
 } from "@mui/material";
 import ButtonGroupContext from "@mui/material/ButtonGroup/ButtonGroupContext";
-import {Delete, Favorite, FavoriteBorder, HighlightAlt, HighlightOff, } from "@mui/icons-material";
+import {Delete, Favorite, FavoriteBorder, HighlightAlt, HighlightOff,CheckBox, CheckBoxOutlineBlank } from "@mui/icons-material";
+
 
 export type TaskType = {
     id: string
@@ -79,8 +80,8 @@ export function Todolist(props: PropsType) {
                         <Paper sx={{m: '5px'}} elevation={1}><ListItem key={t.id} className={t.isDone ? "is-done" : ""} sx={{padding: '0'}}>
 
                             <Checkbox onChange={onChangeHandler} checked={t.isDone}
-                                      icon={<FavoriteBorder color={'error'}/>}
-                                      checkedIcon={<Favorite color={'error'}/>}/>
+                                      icon={<CheckBoxOutlineBlank color={'error'}/>}
+                                      checkedIcon={<CheckBox color={'error'}/>}/>
                             <EditableSpan value={t.title} onChange={onTitleChangeHandler}/>
                             <ListItemSecondaryAction>
                                 <IconButton onClick={onClickHandler}>

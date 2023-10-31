@@ -20,7 +20,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import {amber, teal} from "@mui/material/colors";
 
 export type FilterValuesType = "all" | "active" | "completed";
-type TodolistType = {
+export type TodolistType = {
     id: string
     title: string
     filter: FilterValuesType
@@ -104,6 +104,16 @@ function App() {
         }
     }
 
+    function addTodolist(title: string) {
+        let newTodolistId = v1();
+        let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
+        setTodolists([newTodolist, ...todolists]);
+        setTasks({
+            ...tasks,
+            [newTodolistId]: []
+        })
+    }
+
     let todolistId1 = v1();
     let todolistId2 = v1();
 
@@ -130,15 +140,7 @@ function App() {
         //setSwitcher(<Brightness7/>)
     }
 
-    function addTodolist(title: string) {
-        let newTodolistId = v1();
-        let newTodolist: TodolistType = {id: newTodolistId, title: title, filter: 'all'};
-        setTodolists([newTodolist, ...todolists]);
-        setTasks({
-            ...tasks,
-            [newTodolistId]: []
-        })
-    }
+
 
     const theme = createTheme({
         palette: {
